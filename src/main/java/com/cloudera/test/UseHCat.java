@@ -97,7 +97,7 @@ public class UseHCat extends Configured implements Tool {
 
         HCatOutputFormat.setOutput(job, OutputJobInfo.create(dbName,
                    outputTableName, null));
-        HCatSchema s = HCatOutputFormat.getTableSchema(job);
+        HCatSchema s = HCatOutputFormat.getTableSchema(job.getConfiguration());
         System.err.println("INFO: output schema explicitly set for writing:" + s);
         HCatOutputFormat.setSchema(job, s);
         return (job.waitForCompletion(true) ? 0 : 1);
